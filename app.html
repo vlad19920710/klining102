@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Клининг Уфа — Профессиональный клининг квартир и офисов</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+
+        /* Animated background bubbles */
+        .bg-animated {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            animation: floatBubble linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatBubble {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* Sparkle particles */
+        .sparkle {
+            position: absolute;
+            width: 4px; height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glass card */
+        .glass {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .glass-light {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        /* Card hover */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(96, 165, 250, 0.4);
+            box-shadow: 0 20px 60px rgba(96, 165, 250, 0.15);
+        }
+
+        /* Price card popular glow */
+        .popular-glow {
+            box-shadow: 0 0 40px rgba(96, 165, 250, 0.2), 0 0 80px rgba(167, 139, 250, 0.1);
+        }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Animated gradient border */
+        .gradient-border {
+            position: relative;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6, #60a5fa);
+            background-size: 300% 300%;
+            animation: borderGlow 4s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .float { animation: float 6s ease-in-out infinite; }
+        .float-delay { animation: float 6s ease-in-out 2s infinite; }
+        .float-delay2 { animation: float 6s ease-in-out 4s infinite; }
+
+        /* Wave */
+        .wave-divider {
+            position: relative;
+        }
+        .wave-divider svg {
+            display: block;
+        }
+
+        /* Counter animation */
+        .counter { transition: all 0.3s; }
+
+        /* Nav blur on scroll */
+        .nav-scrolled {
+            background: rgba(15, 23, 42, 0.9) !important;
+            backdrop-filter: blur(20px);
+        }
+
+        /* Pulse ring */
+        @keyframes pulseRing {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .pulse-ring::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: inherit;
+            border: 2px solid #60a5fa;
+            animation: pulseRing 2s ease-out infinite;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Checkbox custom */
+        .check-icon {
+            color: #60a5fa;
+        }
+
+        /* Before/After slider */
+        .before-after-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .slider-handle {
+            cursor: ew-resize;
+        }
+
+        /* Live wallpaper particles */
+        #liveCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Before/After comparison */
+        .ba-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            cursor: ew-resize;
+            user-select: none;
+        }
+        .ba-slider img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ba-before {
+            position: absolute;
+            top: 0; left: 0;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: none;
+        }
+        .ba-before img {
+            width: 200%;
+            max-width: none;
+        }
+        .ba-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: white;
+            transform: translateX(-50%);
+            z-index: 10;
+            box-shadow: 0 0 12px rgba(255,255,255,0.5);
+        }
+        .ba-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px; height: 52px;
+            background: white;
+            border-radius: 50%;
+            z-index: 11;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.5), 0 0 0 4px rgba(255,255,255,0.3);
+            transition: transform 0.2s;
+        }
+        .ba-handle:hover {
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+        .ba-label {
+            position: absolute;
+            top: 12px;
+            padding: 4px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 12;
+            letter-spacing: 0.5px;
+        }
+        .ba-label-before {
+            left: 12px;
+            background: rgba(239,68,68,0.85);
+        }
+        .ba-label-after {
+            right: 12px;
+            background: rgba(34,197,94,0.85);
+        }
+
+        .ba-hint {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 600;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            z-index: 12;
+            pointer-events: none;
+            animation: hintPulse 2s ease-in-out infinite;
+            white-space: nowrap;
+        }
+        @keyframes hintPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Urgency banner pulse */
+        @keyframes urgencyPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(251,191,36,0.4); }
+            50% { box-shadow: 0 0 0 12px rgba(251,191,36,0); }
+        }
+        .urgency-pulse {
+            animation: urgencyPulse 2s ease-in-out infinite;
+        }
+
+        /* Video card */
+        .video-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+        .video-card iframe {
+            width: 100%;
+            aspect-ratio: 9/16;
+            border: none;
+            border-radius: 1.5rem;
+        }
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+            pointer-events: none;
+            border-radius: 1.5rem;
+        }
+
+        /* Telegram CTA floating */
+        .tg-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 100;
+            animation: float 3s ease-in-out infinite;
+        }
+        .tg-float a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #0088cc, #00aaff);
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 15px;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 8px 32px rgba(0,136,204,0.4);
+            transition: all 0.3s;
+        }
+        .tg-float a:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 40px rgba(0,136,204,0.6);
+        }
+
+        /* Trust badges row */
+        .trust-scroll {
+            display: flex;
+            gap: 2rem;
+            animation: scrollTrust 20s linear infinite;
+        }
+        @keyframes scrollTrust {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Promo timer */
+        .timer-digit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px; height: 52px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        /* Gallery grid */
+        .gallery-item {
+            transition: all 0.4s;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body class="text-white overflow-x-hidden">
+    <!-- Live Canvas Wallpaper -->
+    <canvas id="liveCanvas"></canvas>
+    <!-- Animated Background -->
+    <div class="bg-animated" id="animatedBg"></div>
+
+    <!-- Floating Telegram Button -->
+    <div class="tg-float">
+        <a href="https://t.me/RaschetStoimosti" target="_blank">
+            <i class="fa-brands fa-telegram text-2xl"></i>
+            <span class="hidden sm:inline">Написать в Telegram</span>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                        <i class="fa-solid fa-sparkles text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold">Клининг<span class="text-blue-400"> Уфа</span></span>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#services" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Услуги</a>
+                    <a href="#pricing" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Цены</a>
+                    <a href="#reviews" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Отзывы</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Контакты</a>
+                    <a href="https://t.me/RaschetStoimosti" target="_blank" class="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                        <i class="fa-brands fa-telegram"></i>
+                        Заказать
+                    </a>
+                </div>
+                <button id="menuBtn" class="md:hidden text-white text-2xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full z-50 bg-slate-900/95 backdrop-blur-xl p-8">
+        <button id="closeMenu" class="absolute top-6 right-6 text-2xl text-white"><i class="fa-solid fa-xmark"></i></button>
+        <div class="flex flex-col gap-6 mt-16">
+            <a href="#services" class="text-lg text-gray-300 hover:text-white transition-colors mobile-link">Услуги</a>
+            <a href="#pricing" class="text-lg text-gray-300 hover:text-white transition-colors mobile-link">Цены</a>
+            <a href="#reviews" class="text-lg text-gray-300 hover:text-white transition-colors mobile-link">Отзывы</a>
+            <a href="#contact" class="text-lg text-gray-300 hover:text-white transition-colors mobile-link">Контакты</a>
+            <a href="https://t.me/RaschetStoimosti" target="_blank" class="mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-center font-semibold mobile-link flex items-center justify-center gap-2">
+                <i class="fa-brands fa-telegram"></i>
+                Написать в Telegram
+            </a>
+        </div>
+    </div>
+
+    <!-- Urgency Promo Banner -->
+    <section class="pt-24 pb-4">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="reveal glass rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 border border-yellow-500/30 urgency-pulse">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-fire-flame-curved text-yellow-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-yellow-300">Скидка 20% на первую уборку!</div>
+                        <div class="text-sm text-gray-400">Акция действует ограниченное время</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                    <div class="timer-digit" id="timerH">04</div>
+                    <span class="text-xl font-bold text-yellow-400">:</span>
+                    <div class="timer-digit" id="timerM">59</div>
+                    <span class="text-xl font-bold text-yellow-400">:</span>
+                    <div class="timer-digit" id="timerS">59</div>
+                </div>
+                <a href="https://t.me/RaschetStoimosti" target="_blank" class="px-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl font-bold text-sm hover:scale-105 transition-all shrink-0 text-black">
+                    Забрать скидку
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center relative pt-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                        <span class="text-sm text-gray-300">Клининг в Уфе — принимаем заявки 24/7</span>
+                    </div>
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                        Идеальная<br>
+                        <span class="gradient-text font-playfair italic">чистота</span><br>
+                        за один день
+                    </h1>
+                    <p class="text-lg text-gray-400 mb-6 max-w-lg leading-relaxed">
+                        Профессиональный клининг квартир, домов и офисов в Уфе. 
+                        Экологичные средства, опытная команда, гарантия результата. 
+                        <strong class="text-white">Оплата только после приёмки!</strong>
+                    </p>
+
+                    <!-- Trust micro-badges -->
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium text-green-300">
+                            <i class="fa-solid fa-shield-check"></i> Договор и чек
+                        </span>
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium text-blue-300">
+                            <i class="fa-solid fa-leaf"></i> Эко-средства
+                        </span>
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium text-purple-300">
+                            <i class="fa-solid fa-clock"></i> Выезд за 1 час
+                        </span>
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium text-yellow-300">
+                            <i class="fa-solid fa-star"></i> Рейтинг 4.9
+                        </span>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 mb-10">
+                        <a href="https://t.me/RaschetStoimosti" target="_blank" class="group px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl font-semibold text-lg hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 flex items-center gap-3">
+                            <i class="fa-brands fa-telegram text-xl"></i>
+                            Рассчитать стоимость
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="tel:+79823818632" class="px-8 py-4 glass rounded-2xl font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-green-400"></i>
+                            Позвонить
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-6 sm:gap-8 flex-wrap">
+                        <div>
+                            <div class="text-3xl font-bold text-white" data-count="2500">0</div>
+                            <div class="text-sm text-gray-400">Довольных клиентов</div>
+                        </div>
+                        <div class="w-px h-12 bg-gray-700"></div>
+                        <div>
+                            <div class="text-3xl font-bold text-white" data-count="8">0</div>
+                            <div class="text-sm text-gray-400">Лет в Уфе</div>
+                        </div>
+                        <div class="w-px h-12 bg-gray-700"></div>
+                        <div>
+                            <div class="flex items-center gap-1 text-3xl font-bold text-white">
+                                4.9 <i class="fa-solid fa-star text-yellow-400 text-xl"></i>
+                            </div>
+                            <div class="text-sm text-gray-400">Рейтинг</div>
+                        </div>
+                        <div class="w-px h-12 bg-gray-700"></div>
+                        <div>
+                            <div class="text-3xl font-bold text-white" data-count="15000">0</div>
+                            <div class="text-sm text-gray-400">Уборок</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative reveal hidden lg:block">
+                    <div class="relative">
+                        <div class="absolute -top-8 -left-8 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl float"></div>
+                        <div class="absolute -bottom-8 -right-8 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl float-delay"></div>
+                        
+                        <!-- Main hero card -->
+                        <div class="relative glass rounded-3xl p-6 float">
+                            <div class="w-full aspect-[4/5] rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 flex flex-col items-center justify-center overflow-hidden relative">
+                                <i class="fa-solid fa-spray-can-sparkles text-7xl text-blue-400 mb-2"></i>
+                                <div class="text-5xl mt-2">🏠✨</div>
+                                <div class="mt-6 text-center px-4">
+                                    <div class="text-2xl font-bold mb-1">Уфа</div>
+                                    <div class="text-gray-400 text-sm">Выезжаем во все районы города</div>
+                                </div>
+                                <!-- Map pins decoration -->
+                                <div class="absolute top-4 left-4 flex items-center gap-2 glass-light rounded-full px-3 py-1.5">
+                                    <i class="fa-solid fa-location-dot text-red-400 text-xs"></i>
+                                    <span class="text-xs">Сипайлово</span>
+                                </div>
+                                <div class="absolute top-4 right-4 flex items-center gap-2 glass-light rounded-full px-3 py-1.5">
+                                    <i class="fa-solid fa-location-dot text-red-400 text-xs"></i>
+                                    <span class="text-xs">Центр</span>
+                                </div>
+                                <div class="absolute bottom-16 left-4 flex items-center gap-2 glass-light rounded-full px-3 py-1.5">
+                                    <i class="fa-solid fa-location-dot text-red-400 text-xs"></i>
+                                    <span class="text-xs">Черниковка</span>
+                                </div>
+                                <div class="absolute bottom-16 right-4 flex items-center gap-2 glass-light rounded-full px-3 py-1.5">
+                                    <i class="fa-solid fa-location-dot text-red-400 text-xs"></i>
+                                    <span class="text-xs">Дёма</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating badge 1 -->
+                        <div class="absolute -top-4 -right-4 glass-light rounded-2xl p-4 float-delay">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                                    <i class="fa-solid fa-leaf text-green-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-semibold">Эко-средства</div>
+                                    <div class="text-xs text-gray-400">Безопасно для детей</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating badge 2 -->
+                        <div class="absolute -bottom-4 -left-4 glass-light rounded-2xl p-4 float-delay2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                                    <i class="fa-solid fa-bolt text-yellow-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-semibold">Выезд за 1 час</div>
+                                    <div class="text-xs text-gray-400">Срочные заказы</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Ticker -->
+    <section class="py-6 overflow-hidden border-y border-white/5">
+        <div class="relative">
+            <div class="trust-scroll whitespace-nowrap">
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Работаем по договору</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Оплата после приёмки</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Гарантия 48 часов</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Экологичные средства</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Проверенные сотрудники</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Выезд во все районы Уфы</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Фиксированные цены</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Работаем по договору</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Оплата после приёмки</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Гарантия 48 часов</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Экологичные средства</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Проверенные сотрудники</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Выезд во все районы Уфы</span>
+                <span class="inline-flex items-center gap-2 text-gray-400 text-sm"><i class="fa-solid fa-check-circle text-green-400"></i> Фиксированные цены</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
+                    <i class="fa-solid fa-broom text-blue-400"></i>
+                    <span class="text-sm text-gray-300">Наши услуги</span>
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+                    Что мы <span class="gradient-text font-playfair italic">предлагаем</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Полный спектр клининговых услуг для вашего дома и офиса</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service 1 -->
+                <div class="glass rounded-3xl p-8 card-hover reveal">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-house text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Уборка квартир</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Генеральная и поддерживающая уборка квартир любой площади. Каждый уголок будет сиять чистотой.</p>
+                    <div class="flex items-center gap-2 text-blue-400 text-sm font-medium">
+                        <span>от 3 500 ₽</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass rounded-3xl p-8 card-hover reveal">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-purple-600/20 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-building text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Уборка офисов</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Чистый офис — продуктивная команда. Ежедневная и генеральная уборка коммерческих помещений.</p>
+                    <div class="flex items-center gap-2 text-purple-400 text-sm font-medium">
+                        <span>от 5 000 ₽</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass rounded-3xl p-8 card-hover reveal">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500/20 to-pink-600/20 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-couch text-pink-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Химчистка мебели</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Профессиональная химчистка диванов, кресел, матрасов. Удаление пятен и неприятных запахов.</p>
+                    <div class="flex items-center gap-2 text-pink-400 text-sm font-medium">
+                        <span>от 2 000 ₽</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass rounded-3xl p-8 card-hover reveal">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/20 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-window-maximize text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Мойка окон</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Кристально чистые окна без разводов. Моем окна на любой высоте с использованием профессионального оборудования.</p>
+                    <div class="flex items-center gap-2 text-green-400 text-sm font-medium">
+                        <span>от 400 ₽/окно</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="glass rounded-3xl p-8 card-hover reveal">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-truck-moving text-yellow-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Уборка после ремонта</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Полная уборка помещения после строительных и ремонтных работ. Удаление строительной пыли и мусора.</p>
+                    <div class="flex items-center gap-2 text-yellow-400 text-sm font-medium">
+                        <span>от 6 500 ₽</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass rounded-3xl p-8 card-hover reveal">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-carpet text-cyan-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Химчистка ковров</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Глубокая чистка ковров и ковровых покрытий. Возвращаем первоначальный вид и свежесть.</p>
+                    <div class="flex items-center gap-2 text-cyan-400 text-sm font-medium">
+                        <span>от 300 ₽/м²</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
+                    <i class="fa-solid fa-tag text-blue-400"></i>
+                    <span class="text-sm text-gray-300">Тарифы</span>
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+                    Прозрачные <span class="gradient-text font-playfair italic">цены</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Выберите подходящий тариф. Никаких скрытых платежей — только честные цены.</p>
+            </div>
+
+            <!-- Минимальная сумма заказа -->
+            <div class="reveal mb-12">
+                <div class="glass rounded-2xl p-6 max-w-2xl mx-auto text-center border border-blue-500/20">
+                    <div class="flex items-center justify-center gap-3 mb-2">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-info-circle text-blue-400 text-lg"></i>
+                        </div>
+                        <span class="text-lg font-bold">Минимальная сумма заказа — <span class="gradient-text">3 500 ₽</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm">Мы гарантируем высокое качество при любом объёме работ</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Поддерживающая -->
+                <div class="glass rounded-3xl p-8 card-hover reveal relative">
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-300 mb-1">Поддерживающая</h3>
+                        <p class="text-sm text-gray-500">Регулярная уборка для поддержания чистоты</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-sm text-gray-500 mb-1">от</div>
+                        <span class="text-5xl font-bold">3 500</span>
+                        <span class="text-gray-400 text-lg"> ₽</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Идеально подходит для тех, кто следит за чистотой и хочет поддерживать порядок между генеральными уборками. Быстро, удобно, регулярно.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Влажная уборка всех полов
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Протирка всех поверхностей от пыли
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Уборка кухни (плита, столешницы, раковина)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Чистка санузла и сантехники
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Вынос мусора
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Протирка зеркал
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-500">
+                            <i class="fa-solid fa-xmark text-gray-600"></i>
+                            Мытьё окон
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-500">
+                            <i class="fa-solid fa-xmark text-gray-600"></i>
+                            Уборка внутри шкафов
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block w-full py-3.5 rounded-2xl glass text-center font-semibold hover:bg-white/10 transition-all duration-300">
+                        Заказать
+                    </a>
+                </div>
+
+                <!-- Генеральная -->
+                <div class="glass rounded-3xl p-8 card-hover reveal relative popular-glow gradient-border">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-xs font-bold">
+                        ПОПУЛЯРНЫЙ
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-white mb-1">Генеральная</h3>
+                        <p class="text-sm text-gray-400">Глубокая уборка всей квартиры</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-sm text-gray-500 mb-1">от</div>
+                        <span class="text-5xl font-bold gradient-text">4 500</span>
+                        <span class="text-gray-400 text-lg"> ₽</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Полная глубокая уборка каждого уголка. Включает всё из поддерживающей + тщательная обработка труднодоступных мест, техники и окон.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Всё из «Поддерживающей» уборки
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Мытьё окон изнутри
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Уборка внутри шкафов и полок
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Чистка бытовой техники (микроволновка, духовка, холодильник)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Удаление пыли с люстр и карнизов
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Мытьё плинтусов и дверей
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Чистка межплиточных швов
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Удаление известкового налёта
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block w-full py-3.5 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 text-center font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105">
+                        Заказать
+                    </a>
+                </div>
+
+                <!-- После ремонта -->
+                <div class="glass rounded-3xl p-8 card-hover reveal relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full text-xs font-bold text-black">
+                        МАКСИМУМ
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-300 mb-1">После ремонта</h3>
+                        <p class="text-sm text-gray-500">Полная уборка после строительных работ</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-sm text-gray-500 mb-1">от</div>
+                        <span class="text-5xl font-bold">6 500</span>
+                        <span class="text-gray-400 text-lg"> ₽</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Самая трудоёмкая уборка. Удаляем строительную пыль, остатки клея, цемента, краски. Квартира будет готова к заселению!</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Всё из «Генеральной» уборки
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Удаление строительной пыли отовсюду
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Отмывка следов клея, цемента, краски
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Мытьё окон с обеих сторон
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Чистка вентиляционных решёток
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Мытьё радиаторов отопления
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Удаление защитной плёнки
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i class="fa-solid fa-check check-icon"></i>
+                            Вывоз строительного мусора
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block w-full py-3.5 rounded-2xl glass text-center font-semibold hover:bg-white/10 transition-all duration-300">
+                        Заказать
+                    </a>
+                </div>
+            </div>
+
+            <!-- Additional pricing info -->
+            <div class="mt-12 text-center reveal">
+                <p class="text-gray-500 text-sm mb-4">* Цены указаны минимальные. Точная стоимость зависит от площади помещения и его состояния.</p>
+                <div class="inline-flex flex-wrap justify-center gap-6 text-sm text-gray-400 mb-4">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-info-circle text-blue-400"></i> Минимальный заказ: 3 500 ₽</span>
+                </div>
+                <div class="inline-flex flex-wrap justify-center gap-6 text-sm text-gray-400 mb-6">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-plus text-blue-400"></i> 2-комн: +30%</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-plus text-blue-400"></i> 3-комн: +60%</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-plus text-blue-400"></i> 4-комн: +90%</span>
+                </div>
+                <a href="https://t.me/RaschetStoimosti" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl font-semibold hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105">
+                    <i class="fa-brands fa-telegram text-xl"></i>
+                    Точный расчёт за 2 минуты
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work -->
+    <section id="process" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
+                    <i class="fa-solid fa-route text-blue-400"></i>
+                    <span class="text-sm text-gray-300">Процесс</span>
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+                    Как мы <span class="gradient-text font-playfair italic">работаем</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Всего 4 простых шага до идеальной чистоты</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center reveal">
+                    <div class="relative mx-auto w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-phone text-blue-400 text-2xl"></i>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold">1</div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Оставьте заявку</h3>
+                    <p class="text-gray-400 text-sm">Позвоните нам или заполните форму на сайте</p>
+                </div>
+
+                <div class="text-center reveal">
+                    <div class="relative mx-auto w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500/20 to-purple-600/20 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-calculator text-purple-400 text-2xl"></i>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-sm font-bold">2</div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Расчёт стоимости</h3>
+                    <p class="text-gray-400 text-sm">Менеджер рассчитает точную стоимость уборки</p>
+                </div>
+
+                <div class="text-center reveal">
+                    <div class="relative mx-auto w-20 h-20 rounded-2xl bg-gradient-to-br from-pink-500/20 to-pink-600/20 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-spray-can-sparkles text-pink-400 text-2xl"></i>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-sm font-bold">3</div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Выполняем уборку</h3>
+                    <p class="text-gray-400 text-sm">Наша команда приедет в удобное для вас время</p>
+                </div>
+
+                <div class="text-center reveal">
+                    <div class="relative mx-auto w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/20 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-circle-check text-green-400 text-2xl"></i>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-sm font-bold">4</div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Принимайте работу</h3>
+                    <p class="text-gray-400 text-sm">Проверьте результат и оплатите только если довольны</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
+                        <i class="fa-solid fa-shield-check text-blue-400"></i>
+                        <span class="text-sm text-gray-300">Преимущества</span>
+                    </div>
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+                        Почему выбирают <span class="gradient-text font-playfair italic">нас</span>
+                    </h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">Мы не просто убираем — мы создаём пространство, в котором хочется жить. Каждый клиент для нас — это партнёр, которому мы дарим комфорт.</p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-leaf text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Экологичные средства</h4>
+                                <p class="text-gray-400 text-sm">Используем только сертифицированные средства, безопасные для детей и животных</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-user-shield text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Проверенные сотрудники</h4>
+                                <p class="text-gray-400 text-sm">Все клинеры проходят проверку и обучение перед началом работы</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-hand-holding-heart text-pink-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Гарантия качества</h4>
+                                <p class="text-gray-400 text-sm">Если что-то не устроит — бесплатно переделаем в течение 24 часов</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-wallet text-green-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Фиксированные цены</h4>
+                                <p class="text-gray-400 text-sm">Стоимость оговаривается заранее и не меняется после уборки</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass rounded-3xl p-6 text-center card-hover">
+                            <div class="text-4xl font-bold gradient-text mb-2">2 500+</div>
+                            <div class="text-sm text-gray-400">Довольных клиентов</div>
+                        </div>
+                        <div class="glass rounded-3xl p-6 text-center card-hover">
+                            <div class="text-4xl font-bold gradient-text mb-2">15 000+</div>
+                            <div class="text-sm text-gray-400">Выполненных уборок</div>
+                        </div>
+                        <div class="glass rounded-3xl p-6 text-center card-hover">
+                            <div class="text-4xl font-bold gradient-text mb-2">50+</div>
+                            <div class="text-sm text-gray-400">Профессионалов</div>
+                        </div>
+                        <div class="glass rounded-3xl p-6 text-center card-hover">
+                            <div class="text-4xl font-bold gradient-text mb-2">24/7</div>
+                            <div class="text-sm text-gray-400">Поддержка клиентов</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <span class="text-sm text-gray-300">Отзывы</span>
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+                    Что говорят <span class="gradient-text font-playfair italic">клиенты</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Реальные отзывы жителей Уфы о нашей работе</p>
+            </div>
+
+            <!-- Text Reviews -->
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                <div class="glass rounded-3xl p-8 card-hover reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">«Заказывала генеральную уборку после ремонта в новостройке на Проспекте Октября. Ребята приехали вовремя, работали 5 часов — квартира сияет! Особенно впечатлило, как отмыли плитку. Буду обращаться ещё!»</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-sm font-bold">АК</div>
+                        <div>
+                            <div class="text-sm font-semibold">Анна Козлова</div>
+                            <div class="text-xs text-gray-500">Уфа, Проспект Октября</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-8 card-hover reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">«Пользуюсь услугами CleanSpace уже полгода. Каждые две недели — поддерживающая уборка трёшки в Сипайлово. Качество всегда на высоте, девочки очень аккуратные. Цены адекватные для Уфы.»</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-cyan-500 flex items-center justify-center text-sm font-bold">ДМ</div>
+                        <div>
+                            <div class="text-sm font-semibold">Дмитрий Морозов</div>
+                            <div class="text-xs text-gray-500">Уфа, Сипайлово</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-8 card-hover reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">«Химчистка дивана — просто волшебство! Думала, что пятна от кофе уже не вывести, но ребята справились за час. Диван как из магазина. Плюс приятно пахнет. Очень рекомендую!»</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center text-sm font-bold">ЕС</div>
+                        <div>
+                            <div class="text-sm font-semibold">Елена Соколова</div>
+                            <div class="text-xs text-gray-500">Уфа, Черниковка</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-8 card-hover reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">«Офис 120 м² убирают каждый день. За 3 месяца ни одного нарекания. Сотрудники довольны, клиенты тоже. Отдельное спасибо за оперативность — всегда приходят вовремя.»</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-sm font-bold">РА</div>
+                        <div>
+                            <div class="text-sm font-semibold">Руслан Ахметов</div>
+                            <div class="text-xs text-gray-500">Уфа, ул. Ленина</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-8 card-hover reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400 opacity-50"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">«Заказывали уборку после переезда — 4 комнаты, кухня, 2 санузла. Думали, займёт весь день, но команда из 3 человек справилась за 4 часа. Всё блестит, даже люстры помыли!»</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-sm font-bold">МГ</div>
+                        <div>
+                            <div class="text-sm font-semibold">Марина Галимова</div>
+                            <div class="text-xs text-gray-500">Уфа, Затон</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-3xl p-8 card-hover reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">«Мыли окна на 14 этаже — я бы сам никогда не рискнул. Сделали быстро, без разводов, ещё и подоконники отмыли. Цена приятная. Теперь вид из окна — загляденье!»</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-violet-500 flex items-center justify-center text-sm font-bold">ИН</div>
+                        <div>
+                            <div class="text-sm font-semibold">Ильдар Нуриев</div>
+                            <div class="text-xs text-gray-500">Уфа, Инорс</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
+                        <i class="fa-solid fa-paper-plane text-blue-400"></i>
+                        <span class="text-sm text-gray-300">Контакты</span>
+                    </div>
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+                        Закажите <span class="gradient-text font-playfair italic">уборку</span> прямо сейчас
+                    </h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">Оставьте заявку, и мы свяжемся с вами в течение 15 минут. Или напишите напрямую в Telegram — <a href="https://t.me/RaschetStoimosti" target="_blank" class="text-blue-400 hover:underline">@RaschetStoimosti</a></p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                                <i class="fa-brands fa-telegram text-blue-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-400">Telegram (основной)</div>
+                                <a href="https://t.me/RaschetStoimosti" target="_blank" class="font-semibold hover:text-blue-400 transition-colors">@RaschetStoimosti</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <a href="tel:+79823818632" class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center hover:bg-green-500/20 transition-colors">
+                                <i class="fa-solid fa-phone text-green-400"></i>
+                            </a>
+                            <div>
+                                <div class="text-sm text-gray-400">Телефон</div>
+                                <a href="tel:+79823818632" class="font-semibold hover:text-green-400 transition-colors">Позвонить нам</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot text-purple-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-400">Город</div>
+                                <div class="font-semibold">Уфа, все районы</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center">
+                                <i class="fa-solid fa-clock text-pink-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-400">Время работы</div>
+                                <div class="font-semibold">Ежедневно, 7:00 — 23:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <form id="contactForm" class="glass rounded-3xl p-8">
+                        <h3 class="text-xl font-bold mb-6">Оставить заявку</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Ваше имя</label>
+                                <input type="text" placeholder="Иван Иванов" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Телефон</label>
+                                <input type="tel" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Тип услуги</label>
+                                <select class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-blue-500 transition-colors">
+                                    <option value="" class="bg-slate-900">Выберите услугу</option>
+                                    <option value="apartment" class="bg-slate-900">Уборка квартиры</option>
+                                    <option value="office" class="bg-slate-900">Уборка офиса</option>
+                                    <option value="furniture" class="bg-slate-900">Химчистка мебели</option>
+                                    <option value="windows" class="bg-slate-900">Мойка окон</option>
+                                    <option value="renovation" class="bg-slate-900">После ремонта</option>
+                                    <option value="carpet" class="bg-slate-900">Химчистка ковров</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Комментарий</label>
+                                <textarea rows="3" placeholder="Расскажите подробнее о вашем запросе..." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Отправить заявку
+                            </button>
+                        </div>
+                        <div id="formSuccess" class="hidden mt-4 p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm text-center">
+                            <i class="fa-solid fa-circle-check mr-2"></i>
+                            Заявка отправлена! Мы свяжемся с вами в течение 15 минут.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                            <i class="fa-solid fa-sparkles text-white text-lg"></i>
+                        </div>
+                        <span class="text-xl font-bold">Клининг<span class="text-blue-400"> Уфа</span></span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">Профессиональный клининг в Уфе. Квартиры, дома, офисы. Чистота — это наша страсть.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Услуги</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Уборка квартир</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Уборка офисов</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Химчистка мебели</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Мойка окон</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Компания</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">О нас</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Вакансии</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Блог</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Партнёрам</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-gray-500 text-sm">© 2025 Клининг Уфа. Все права защищены.</p>
+                <div class="flex gap-6 text-sm text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors">Политика конфиденциальности</a>
+                    <a href="#" class="hover:text-white transition-colors">Оферта</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== Animated Background =====
+        const bgContainer = document.getElementById('animatedBg');
+        
+        // Create bubbles
+        const colors = [
+            'rgba(96, 165, 250, 0.15)',
+            'rgba(167, 139, 250, 0.15)',
+            'rgba(244, 114, 182, 0.12)',
+            'rgba(52, 211, 153, 0.1)',
+            'rgba(251, 191, 36, 0.08)'
+        ];
+
+        for (let i = 0; i < 25; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            const size = Math.random() * 200 + 50;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            bubble.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${Math.random() * 100}%;
+                background: radial-gradient(circle, ${color}, transparent);
+                animation-duration: ${Math.random() * 15 + 10}s;
+                animation-delay: ${Math.random() * 10}s;
+            `;
+            bgContainer.appendChild(bubble);
+        }
+
+        // Create sparkles
+        for (let i = 0; i < 40; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.cssText = `
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                animation-duration: ${Math.random() * 3 + 2}s;
+                animation-delay: ${Math.random() * 5}s;
+            `;
+            bgContainer.appendChild(sparkle);
+        }
+
+        // ===== Navbar scroll effect =====
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+
+        // ===== Mobile menu =====
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        });
+
+        // ===== Scroll reveal =====
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ===== Counter animation =====
+        const counters = document.querySelectorAll('[data-count]');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.count);
+                    let current = 0;
+                    const increment = target / 60;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        entry.target.textContent = Math.floor(current).toLocaleString('ru-RU');
+                        if (target > 100) {
+                            entry.target.textContent += '+';
+                        }
+                    }, 30);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(c => counterObserver.observe(c));
+
+        // ===== Form submission =====
+        const form = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Отправка...';
+            btn.disabled = true;
+
+            // Collect form data
+            const formData = new FormData(form);
+            const name = form.querySelector('input[type="text"]').value || 'Не указано';
+            const phone = form.querySelector('input[type="tel"]').value || 'Не указано';
+            const service = form.querySelector('select').value || 'Не выбрано';
+            const comment = form.querySelector('textarea').value || 'Нет комментария';
+
+            const serviceNames = {
+                'apartment': 'Уборка квартиры',
+                'office': 'Уборка офиса',
+                'furniture': 'Химчистка мебели',
+                'windows': 'Мойка окон',
+                'renovation': 'После ремонта',
+                'carpet': 'Химчистка ковров',
+                '': 'Не выбрано'
+            };
+
+            // Send to Telegram via bot
+            const TELEGRAM_BOT_TOKEN = ''; // Add your bot token here
+            const TELEGRAM_CHAT_ID = ''; // Add your chat ID here
+            
+            const message = `🧹 *Новая заявка с сайта Клининг Уфа!*\n\n👤 *Имя:* ${name}\n📞 *Телефон:* ${phone}\n🏠 *Услуга:* ${serviceNames[service] || service}\n💬 *Комментарий:* ${comment}\n\n📅 *Дата:* ${new Date().toLocaleString('ru-RU')}`;
+
+            // If bot token is set, send to Telegram API
+            if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+                fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                }).catch(() => {});
+            }
+
+            // Also open Telegram with pre-filled message as fallback
+            const tgMessage = encodeURIComponent(`Здравствуйте! Заявка с сайта:\n\nИмя: ${name}\nТелефон: ${phone}\nУслуга: ${serviceNames[service] || service}\nКомментарий: ${comment}`);
+
+            setTimeout(() => {
+                formSuccess.classList.remove('hidden');
+                btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Отправлено!';
+                btn.classList.remove('from-blue-500', 'to-purple-500');
+                btn.classList.add('from-green-500', 'to-emerald-500');
+                
+                // Open Telegram with the message
+                window.open(`https://t.me/RaschetStoimosti?text=${tgMessage}`, '_blank');
+                
+                setTimeout(() => {
+                    form.reset();
+                    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Отправить заявку';
+                    btn.disabled = false;
+                    btn.classList.add('from-blue-500', 'to-purple-500');
+                    btn.classList.remove('from-green-500', 'to-emerald-500');
+                    formSuccess.classList.add('hidden');
+                }, 5000);
+            }, 1500);
+        });
+
+        // ===== Parallax on mouse move (subtle) =====
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 10;
+            const y = (e.clientY / window.innerHeight - 0.5) * 10;
+            bgContainer.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // ===== Live Canvas Wallpaper =====
+        const canvas = document.getElementById('liveCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouseX = 0, mouseY = 0;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.hue = Math.random() * 60 + 200; // blue-purple range
+            }
+            update() {
+                // Subtle mouse attraction
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 200) {
+                    this.x += dx * 0.001;
+                    this.y += dy * 0.001;
+                }
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${this.hue}, 80%, 70%, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 80; i++) {
+            particles.push(new Particle());
+        }
+
+        function drawConnections() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(96, 165, 250, ${0.08 * (1 - dist / 120)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            drawConnections();
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+
+        // ===== Promo Timer =====
+        let totalSeconds = 4 * 3600 + 59 * 60 + 59;
+        function updateTimer() {
+            const h = Math.floor(totalSeconds / 3600);
+            const m = Math.floor((totalSeconds % 3600) / 60);
+            const s = totalSeconds % 60;
+            document.getElementById('timerH').textContent = String(h).padStart(2, '0');
+            document.getElementById('timerM').textContent = String(m).padStart(2, '0');
+            document.getElementById('timerS').textContent = String(s).padStart(2, '0');
+            if (totalSeconds > 0) totalSeconds--;
+            else totalSeconds = 4 * 3600 + 59 * 60 + 59; // restart
+        }
+        updateTimer();
+        setInterval(updateTimer, 1000);
+
+
+    </script>
+</body>
+</html>
